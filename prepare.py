@@ -67,5 +67,4 @@ def prep_contents(df):
     df = df.assign(stemmed = df.normalized.apply(stem))
     df = df.assign(lemmatized = df.normalized.apply(lemmatize))
     df = df.assign(cleaned = df.stemmed.apply(remove_stopwords))
-    df.drop(columns=["title"], inplace=True)
     return df
