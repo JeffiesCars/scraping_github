@@ -129,7 +129,7 @@ repos = ['AIDungeon/AIDungeon',
 
 headers = {
     "Authorization": f"token {github_token}",
-    # "User-Agent": "JeffiesCars",
+    "User-Agent": "JeffiesCars",
 }
 
 if (
