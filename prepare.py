@@ -281,3 +281,16 @@ def prep_contents(df):
     df = df.assign(lemmatized = df.normalized.apply(lemmatize))
     df = df.assign(cleaned = df.lemmatized.apply(remove_stopwords))
     return df
+
+def clean(string):
+    "a simple function to prepare text data"
+    wnl = nltk.stem.WordNetLemmatizer()
+    stopwords = nltk.corpus.stopwords.words("english") + ["r", "u", "2", "ltgt"]
+    string = (
+        unicodedata.normalize("NFKD", string)
+        .encode("ascii", "ignore")
+        .decode("utf-8", "ignore")
+        .lower()
+    )
+    words = re.sub(r"[^\w\s]", "", string).split()
+    return [wnl.lemmatize(word) for word in words if word not in stopwords]
