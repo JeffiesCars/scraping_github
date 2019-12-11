@@ -279,5 +279,5 @@ def prep_contents(df):
     df = df.assign(normalized = df.original.apply(normalize))
     df = df.assign(stemmed = df.normalized.apply(stem))
     df = df.assign(lemmatized = df.normalized.apply(lemmatize))
-    df = df.assign(cleaned = df.lemmatize.apply(remove_stopwords))
+    df = df.assign(cleaned = df.lemmatized.apply(remove_stopwords))
     return df
