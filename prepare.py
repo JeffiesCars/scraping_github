@@ -294,3 +294,9 @@ def clean(string):
     )
     words = re.sub(r"[^\w\s]", "", string).split()
     return [wnl.lemmatize(word) for word in words if word not in stopwords]
+
+def idf(word):
+    n_occurrences = sum([1 for doc in df.cleaned if word in doc])
+    n_docs = len(df.cleaned)
+    idf = np.log(n_docs/n_occurrences)
+    return idf
